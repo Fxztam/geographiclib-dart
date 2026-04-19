@@ -49,11 +49,11 @@ final d = DMS.Decode("48d08'02.7\"N");
 print(DMS.Encode(d.val, DMS.SECOND, 1, DMS.LATITUDE)); // 48°08'02.7"N
 
 // UTM (Karney, ≤ 5 nm)
-final utm = KarneyUTM.fromLatLon(52.52, 13.41);
-print('${utm.zone}${utm.band}  E=${utm.easting.toStringAsFixed(3)}');
+final utm = KarneyUTMConverter.fromLatLon(52.52, 13.41);
+print('${utm.zone}${utm.hemisphere}  E=${utm.easting.toStringAsFixed(3)}');
 
 // Transverse Mercator (Krüger series)
-final tm = KruegerTM.WGS84;
+final tm = KruegerTM(); // WGS84 defaults
 final fwd = tm.forward(9.0, 52.0, 13.41);  // central meridian, lat, lon
 ```
 
@@ -80,6 +80,42 @@ Expected output:
 Building package executable... (1.9s)
 Built test:test.
 00:00 +271: All tests passed!
+```
+
+## Running the demo
+
+A ready-to-run demo script is included in the `example/` folder:
+
+```sh
+git clone https://github.com/Fxztam/geographiclib-dart.git
+cd geographiclib-dart/example
+dart pub get
+dart run bin/test-geolib.dart
+```
+
+Expected output:
+
+```
+=== Geodesic inverse: Berlin → Munich ===
+Distance s12 = 504289.453 m
+Azimuth  azi1 = -164.317446°
+
+=== DMS decode / encode ===
+Decoded value  = 48.134083333333336°
+Re-encoded DMS = 48°08'02.7"N
+
+=== UTM Karney (Berlin 52.52°N 13.41°E) ===
+Zone:      33N
+Easting:   392118.487 m
+Northing:  5820064.675 m
+γ (conv):  -1.261890431°
+k (scale): 0.999742858842
+
+=== KruegerTM forward (lon0=9°, lat=52°, lon=13.41°) ===
+x (easting from CM):  302797.714552 m
+y (northing):         5772534.263476 m
+γ (convergence):      3.477748932°
+k (scale):            1.001125279691
 ```
 
 ## Origins
