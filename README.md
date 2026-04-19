@@ -16,6 +16,67 @@ A pure-Dart library — works in any Dart project and in Flutter apps.
 | `KarneyUTM`, `UTMResult` | UTM ↔ geographic (Karney) | ≤ 5 nm |
 | `UTMConverter`, `UTMPoint`, `GeoPoint` | UTM ↔ geographic (Snyder) | ~1 mm |
 
+## API parity: geographiclib-geodesic JS v2.2.0 → Dart
+
+All public methods and output flags of the official JavaScript library have been ported 1 : 1 to Dart.
+
+### Geodesic
+
+| JS | Dart |
+|---|---|
+| `Inverse` | `inverse` |
+| `Direct` | `direct` |
+| `ArcDirect` | `arcDirect` |
+| `Line` | `line` |
+| `DirectLine` | `directLine` |
+| `ArcDirectLine` | `arcDirectLine` |
+| `InverseLine` | `inverseLine` |
+| `Polygon` | `polygon` |
+
+### GeodesicLine
+
+| JS | Dart |
+|---|---|
+| `Position` | `position` |
+| `ArcPosition` | `arcPosition` |
+| `GenPosition` | `genPosition` |
+| `SetDistance` | `setDistance` |
+| `SetArc` | `setArc` |
+| `GenSetDistance` | `genSetDistance` |
+
+### PolygonArea
+
+| JS | Dart |
+|---|---|
+| `AddPoint` | `addPoint` |
+| `AddEdge` | `addEdge` |
+| `Compute` | `compute` |
+| `TestPoint` | `testPoint` |
+| `TestEdge` | `testEdge` |
+| `Clear` | `clear` |
+
+### Output mask flags
+
+| JS | Dart |
+|---|---|
+| `NONE`, `ALL`, `STANDARD` | `gNone`, `gAll`, `gStandard` |
+| `LATITUDE`, `LONGITUDE`, `AZIMUTH` | `gLatitude`, `gLongitude`, `gAzimuth` |
+| `DISTANCE`, `DISTANCE_IN` | `gDistance`, `gDistanceIn` |
+| `REDUCEDLENGTH`, `GEODESICSCALE` | `gReducedLength`, `gGeodesicScale` |
+| `AREA`, `LONG_UNROLL`, `OUT_MASK` | `gArea`, `gLongUnroll`, `gOutMask` |
+
+### Additional functionality beyond the JS library
+
+The Dart port additionally covers algorithms from the C++ GeographicLib that are not part of the JS library:
+
+| Module | Description |
+|---|---|
+| `KruegerTM` | Transverse Mercator forward/inverse using Karney's 2011 Krüger series — matches `GeographicLib::TransverseMercator` |
+| `TransverseMercatorExact` | Exact Transverse Mercator via Jacobi elliptic functions — matches `GeographicLib::TransverseMercatorExact` |
+| `KarneyUTMConverter` | Full UTM zone handling (forward/inverse) on top of both TM implementations |
+| `EllipticFunction` | Jacobi elliptic functions and integrals, required by the exact TM |
+| `DMS` | Degree/minute/second parsing and formatting — same as the JS `dms` module |
+
 ## Installation
 
 Add to your `pubspec.yaml`:
