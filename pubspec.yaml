@@ -1,0 +1,14 @@
+name: geographiclib_dart
+description: >-
+  Dart port of Charles Karney's GeographicLib: geodesic computations,
+  DMS parsing/formatting, Transverse Mercator projection (Krüger & exact)
+  and UTM conversions for WGS84.
+version: 1.0.0
+homepage: https://geographiclib.sourceforge.io/
+repository: https://gitlab.com/fmatz/geographiclib-dart
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dev_dependencies:
+  test: ^1.24.0
