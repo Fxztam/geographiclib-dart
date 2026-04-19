@@ -71,7 +71,7 @@ import 'package:geographiclib_dart/utm.dart';          // UTM only
 dart test
 ```
 
-205 tests, all passing.
+271 tests, all passing.
 
 ## Origins
 
