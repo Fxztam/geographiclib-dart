@@ -74,6 +74,16 @@ dart pub get
 dart test
 ```
 
+Expected output:
+
+```
+Building package executable... (1.9s)
+Built test:test.
+00:00 +271: All tests passed!
+```
+
+> `+271` is displayed in green in the terminal.
+
 271 tests, all passing.
 
 ## Origins
