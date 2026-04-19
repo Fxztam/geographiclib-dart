@@ -12,7 +12,9 @@ The geodesic core solves both fundamental problems of geodesy on the WGS84 ellip
 
 The library also provides two independent Transverse Mercator implementations following Karney's formulations: a 6th-order Krüger series (≤ 5 nm within 3 500 km of the central meridian) and Lee's exact formulation using Jacobi elliptic functions with no series truncation error. Both are combined into a full UTM converter with correct handling of the Norway and Svalbard special zones.
 
-This Dart port covers the complete public API of the JavaScript library `geographiclib-geodesic` v2.2.0 — all 8 `Geodesic` methods, 6 `GeodesicLine` methods, 6 `PolygonArea` methods and all output-mask flags — supplemented by the Transverse Mercator, UTM, DMS, and EllipticFunction modules from the C++ library. Correctness is verified by 271 test cases ported directly from Karney's upstream C++ and JavaScript test suites.
+This Dart port covers the complete public API of the JavaScript library `geographiclib-geodesic` v2.2.0 — all 8 `Geodesic` methods, 6 `GeodesicLine` methods, 6 `PolygonArea` methods and all output-mask flags — supplemented by the Transverse Mercator, UTM, DMS, and EllipticFunction modules from the C++ library.
+
+Correctness is verified by 271 test cases ported directly from Karney's upstream C++ and JavaScript test suites.
 
 ## Features
 
