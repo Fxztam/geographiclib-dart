@@ -13,8 +13,13 @@ A pure-Dart library — works in any Dart project and in Flutter apps.
 | `KruegerTM`, `TransverseMercatorResult` | Transverse Mercator — 6th-order Krüger series | ≤ 5 nm |
 | `TransverseMercatorExact` | Transverse Mercator — Lee's exact method | exact |
 | `EllipticFunction` | Jacobi elliptic functions and integrals | — |
-| `KarneyUTM`, `UTMResult` | UTM ↔ geographic (Karney) | ≤ 5 nm |
-| `UTMConverter`, `UTMPoint`, `GeoPoint` | UTM ↔ geographic (Snyder) | ~1 mm |
+| `KarneyUTMConverter`, `KarneyUTMPoint` | UTM ↔ geographic — Karney (≤ 5 nm) | ≤ 5 nm |
+
+**Additional — Snyder formulas** (independent implementation, Karney-free):
+
+| Class / API | Description | Accuracy |
+|---|---|---|
+| `UTMConverter`, `UTMPoint`, `GeoPoint` | UTM ↔ geographic — Snyder (1987), pp. 57–64 | ~1 mm |
 
 ## API parity: geographiclib-geodesic JS v2.2.0 → Dart
 
@@ -65,7 +70,7 @@ All public methods and output flags of the official JavaScript library have been
 | `REDUCEDLENGTH`, `GEODESICSCALE` | `gReducedLength`, `gGeodesicScale` |
 | `AREA`, `LONG_UNROLL`, `OUT_MASK` | `gArea`, `gLongUnroll`, `gOutMask` |
 
-### Additional functionality beyond the JS library
+### Additional functionality from C++ GeographicLib (beyond the JS library)
 
 The Dart port additionally covers algorithms from the C++ GeographicLib that are not part of the JS library:
 
@@ -76,6 +81,16 @@ The Dart port additionally covers algorithms from the C++ GeographicLib that are
 | `KarneyUTMConverter` | Full UTM zone handling (forward/inverse) on top of both TM implementations |
 | `EllipticFunction` | Jacobi elliptic functions and integrals, required by the exact TM |
 | `DMS` | Degree/minute/second parsing and formatting — same as the JS `dms` module |
+
+### Additional functionality — Snyder (independent)
+
+The library also includes a classic UTM implementation based on **Snyder (1987)** that is fully independent of GeographicLib:
+
+| Module | Source | Accuracy |
+|---|---|---|
+| `UTMConverter`, `UTMPoint`, `GeoPoint` | Snyder, J.P. (1987): *Map Projections — A Working Manual*, pp. 57–64. USGS Professional Paper 1395. | ~1 mm |
+
+> Use `KarneyUTMConverter` when nanometer-level accuracy is required. Use `UTMConverter` for lightweight, dependency-free UTM conversions.
 
 ## Installation
 
