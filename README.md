@@ -68,6 +68,9 @@ import 'package:geographiclib_dart/utm.dart';          // UTM only
 ## Running tests
 
 ```sh
+git clone https://github.com/Fxztam/geographiclib-dart.git
+cd geographiclib-dart
+dart pub get
 dart test
 ```
 
