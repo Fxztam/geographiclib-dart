@@ -24,7 +24,7 @@ Add to your `pubspec.yaml`:
 dependencies:
   geographiclib_dart:
     git:
-      url: https://gitlab.com/fmatz/geographiclib-dart.git
+      url: https://github.com/Fxztam/geographiclib-dart.git
 ```
 
 Or, once published on pub.dev:
@@ -63,6 +63,14 @@ You can also import individual modules:
 import 'package:geographiclib_dart/geodesic.dart';   // Geodesic only
 import 'package:geographiclib_dart/dms.dart';          // DMS only
 import 'package:geographiclib_dart/utm.dart';          // UTM only
+```
+
+## Publishing to GitHub
+
+```sh
+cd d:\works\work-flutter\geographiclib
+git remote add origin https://github.com/Fxztam/geographiclib-dart.git
+git push -u origin master
 ```
 
 ## Running tests
