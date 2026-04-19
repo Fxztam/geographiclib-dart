@@ -65,14 +65,6 @@ import 'package:geographiclib_dart/dms.dart';          // DMS only
 import 'package:geographiclib_dart/utm.dart';          // UTM only
 ```
 
-## Publishing to GitHub
-
-```sh
-cd d:\works\work-flutter\geographiclib
-git remote add origin https://github.com/Fxztam/geographiclib-dart.git
-git push -u origin master
-```
-
 ## Running tests
 
 ```sh
