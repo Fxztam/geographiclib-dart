@@ -82,10 +82,6 @@ Built test:test.
 00:00 +271: All tests passed!
 ```
 
-> `+271` is displayed in green in the terminal.
-
-271 tests, all passing.
-
 ## Origins
 
 Original C++/JS implementation by Charles Karney (MIT/X11 License):
