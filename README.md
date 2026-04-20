@@ -6,15 +6,17 @@ A pure-Dart library — works in any Dart project and in Flutter apps.
 
 ## About the port
 
-GeographicLib is a collection of highly accurate geodesic algorithms and is widely regarded as the most complete open-source library for geodesy. It provides routines for geodesic calculations on an arbitrary ellipsoid with sub-nanometer numerical precision — an accuracy that exceeds by several orders of magnitude the requirements of any practical geodetic or geospatial application.
+This is a library in Dart to solve geodesic problems on an ellipsoid model of the Earth with sub-nanometer precision. 
 
-The geodesic core solves both fundamental problems of geodesy on the WGS84 ellipsoid: the inverse problem (shortest-path distance and forward/reverse azimuths between two points) and the direct problem (endpoint and intermediate positions given an initial point, azimuth, and distance). Both are computed to better than 15 nm.
+The algorithms are documented in:
 
-The library also provides two independent Transverse Mercator implementations following Karney's formulations: a 6th-order Krüger series (≤ 5 nm within 3 500 km of the central meridian) and Lee's exact formulation using Jacobi elliptic functions with no series truncation error. Both are combined into a full UTM converter with correct handling of the Norway and Svalbard special zones.
+> C. F. F. Karney, [Algorithms for geodesics](https://doi.org/10.1007/s00190-012-0578-z), *J. Geodesy* **87**(1), 43–55 (2013); [Addenda](https://geographiclib.sourceforge.io/geod-addenda.html).
 
-This Dart port covers the complete public API of the JavaScript library `geographiclib-geodesic` v2.2.0 — all 8 `Geodesic` methods, 6 `GeodesicLine` methods, 6 `PolygonArea` methods and all output-mask flags — supplemented by the Transverse Mercator, UTM, DMS, and EllipticFunction modules from the C++ library.
+It solves the direct and inverse geodesic problems on the WGS84 ellipsoid to better than 15 nm, and provides two independent Transverse Mercator implementations: 6th-order Krüger series ≤ 5 nm and Lee's exact method with full UTM zone handling.
 
-Correctness is verified by 271 test cases ported directly from Karney's upstream C++ and JavaScript test suites.
+This Dart port covers the complete public API of `geographiclib-geodesic` JS v2.2.0 — supplemented by the Transverse Mercator, UTM, DMS, and EllipticFunction modules from the C++ library. 
+
+Correctness is verified by 271 test cases from Karney's upstream test suites.
 
 ## Features
 
