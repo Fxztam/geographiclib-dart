@@ -16,6 +16,17 @@ Run all commands from:
 cd D:\works\work-flutter\geographiclib
 ```
 
+## Reference Dataset
+
+The repository should not carry the large authoritative dataset file.
+
+- Origin: https://doi.org/10.5281/zenodo.12510796
+- Dataset version: `1.0`
+- Upstream file name: `Geod3Test-v1.txt`
+- Expected local placement for the harness: `test/data/Geod3Test-v1.txt`
+
+If the dataset is stored somewhere else locally, run the harness with `--data PATH` or set `GEOD3TEST_DATA`.
+
 ## Required Dart Commands
 
 ### 1. Unit and Regression Test

@@ -10,7 +10,7 @@ Release 2.0.0: add triaxial ellipsoid support
 
 This PR introduces the Dart triaxial ellipsoid implementation into `geographiclib_dart` and prepares the package for the `2.0.0` release line.
 
-The transferred implementation includes the core triaxial solver, public exports, dedicated tests, a dataset-driven validation runner, the reference dataset, and repository-local validation documentation.
+The transferred implementation includes the core triaxial solver, public exports, dedicated tests, a dataset-driven validation runner, and repository-local validation documentation for the external reference dataset.
 
 ### What Changed
 
@@ -18,7 +18,7 @@ The transferred implementation includes the core triaxial solver, public exports
 - added the public barrel `lib/triaxial.dart`
 - added `test/triaxial_test.dart`
 - added the dataset runner `tool/geod3test.dart`
-- added `test/data/Geod3Test-v1.txt`
+- added external dataset lookup via `--data` and `GEOD3TEST_DATA`
 - added `README_triaxial.md` and `README_triaxial_transfer.md`
 
 ### Validation

@@ -10,7 +10,7 @@ Date: 2026-04-24
 - Added the public triaxial barrel export `lib/triaxial.dart`.
 - Added dataset-driven triaxial validation via `tool/geod3test.dart`.
 - Added `test/triaxial_test.dart` for unit, regression, inverse, and direct triaxial checks.
-- Added the authoritative reference dataset file `test/data/Geod3Test-v1.txt` required for triaxial validation.
+- Added external-dataset support for `tool/geod3test.dart` via `--data` and `GEOD3TEST_DATA`.
 - Added transfer and validation documentation in `README_triaxial.md` and `README_triaxial_transfer.md`.
 
 ### Validation

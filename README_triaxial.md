@@ -38,7 +38,30 @@ Test and validation entry points:
 
 - `test/triaxial_test.dart`
 - `tool/geod3test.dart`
-- `test/data/Geod3Test-v1.txt`
+
+## Reference Dataset Source
+
+The authoritative triaxial validation dataset is not intended to stay in this repository.
+
+- Origin record: https://doi.org/10.5281/zenodo.12510796
+- Record title: `Test set of geodesics on a triaxial ellipsoid`
+- Dataset version: `1.0`
+- Upstream file name: `Geod3Test-v1.txt`
+- Local file name expected by the harness: `Geod3Test-v1.txt`
+- Preferred local placement: `test/data/Geod3Test-v1.txt`
+
+The authoritative Zenodo record exposes the dataset as a single text file, not as a versioned zip bundle. If you download or repackage it locally, keep the extracted file name as `Geod3Test-v1.txt`.
+
+The harness also accepts an explicit dataset path:
+
+- `dart run tool\geod3test.dart --data D:\path\to\Geod3Test-v1.txt --quick`
+- PowerShell: `$env:GEOD3TEST_DATA = 'D:\path\to\Geod3Test-v1.txt'`
+
+Prerequisite for the dataset harness tests:
+
+- make the file `Geod3Test-v1.txt` available before running the harness
+- preferred setup: place it at `test/data/Geod3Test-v1.txt`
+- alternative setup: keep it elsewhere and pass the path via `--data` or `GEOD3TEST_DATA`
 
 ## Test Types
 
@@ -75,6 +98,12 @@ File:
 
 - `tool/geod3test.dart`
 
+Prerequisite:
+
+- `Geod3Test-v1.txt` must be available before this test runs
+- preferred location: `test/data/Geod3Test-v1.txt`
+- otherwise provide the file explicitly via `--data PATH` or `GEOD3TEST_DATA`
+
 What this does:
 
 - reads `Geod3Test-v1.txt`
@@ -85,6 +114,7 @@ What this does:
 Supported flags:
 
 - `--quick`
+- `--data PATH`
 - `--start N`
 - `--count N`
 - `--report-every N`
@@ -202,3 +232,5 @@ If time allows, the focused anchor runs and the 50000-case slice should also be 
 ## Recommendation
 
 For any future port or repository transfer, keep `tool/geod3test.dart` together with the triaxial files or recreate it immediately in the target repository. Without the dataset harness, it is much harder to distinguish a real solver regression from a local test gap.
+
+Keep the Zenodo DOI and the expected file name together with that harness so that the external dataset can be restored reproducibly.

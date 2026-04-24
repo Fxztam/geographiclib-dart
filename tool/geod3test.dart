@@ -67,11 +67,14 @@ void main(List<String> args) {
   var doInverse = true;
   var doDirect = true;
   var reportEvery = 10000;
+  String? dataPathArg;
 
   for (var index = 0; index < args.length; index++) {
     final arg = args[index];
     if (arg == '--quick') {
       countLimit = 1000;
+    } else if (arg == '--data' && index + 1 < args.length) {
+      dataPathArg = args[++index];
     } else if (arg == '--start' && index + 1 < args.length) {
       startIndex = math.max(0, int.parse(args[++index]));
     } else if (arg == '--count' && index + 1 < args.length) {
@@ -89,15 +92,24 @@ void main(List<String> args) {
     }
   }
 
-  final dataCandidates = <Uri>[
-    Platform.script.resolve('../test/data/Geod3Test-v1.txt'),
-    Platform.script.resolve('../../test/data/Geod3Test-v1.txt'),
+  final envDataPath = Platform.environment['GEOD3TEST_DATA'];
+  final dataCandidates = <File>[
+    if (dataPathArg != null) File(dataPathArg),
+    if (envDataPath != null && envDataPath.isNotEmpty) File(envDataPath),
+    File.fromUri(Platform.script.resolve('../test/data/Geod3Test-v1.txt')),
+    File.fromUri(Platform.script.resolve('../../test/data/Geod3Test-v1.txt')),
   ];
-  final dataFile = dataCandidates
-      .map(File.fromUri)
-      .firstWhere((file) => file.existsSync(), orElse: () => File.fromUri(dataCandidates.first));
+  final dataFile = dataCandidates.firstWhere(
+    (file) => file.existsSync(),
+    orElse: () => dataCandidates.first,
+  );
   if (!dataFile.existsSync()) {
-    stderr.writeln('Reference dataset not found: ${dataFile.path}');
+    stderr.writeln('Reference dataset not found.');
+    stderr.writeln('Tried: ${dataFile.path}');
+    stderr.writeln(
+        'Provide it via --data <path> or GEOD3TEST_DATA, or place Geod3Test-v1.txt under test\\data\\.');
+    stderr.writeln(
+        'Origin: https://doi.org/10.5281/zenodo.12510796  (Zenodo dataset, version 1.0)');
     exitCode = 2;
     return;
   }

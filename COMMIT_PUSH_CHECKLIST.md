@@ -30,12 +30,17 @@ Expected transferred areas:
 - `lib/triaxial.dart`
 - `lib/src/triaxial/`
 - `test/triaxial_test.dart`
-- `test/data/Geod3Test-v1.txt`
 - `tool/geod3test.dart`
 - `README_triaxial.md`
 - `README_triaxial_transfer.md`
 - `CHANGELOG.md`
 - `GITHUB_PR_DESCRIPTION.md`
+
+External validation dependency:
+
+- Zenodo DOI: `10.5281/zenodo.12510796`
+- dataset version: `1.0`
+- file name: `Geod3Test-v1.txt`
 
 ## Suggested Commit Message
 
@@ -47,7 +52,7 @@ Add triaxial ellipsoid support for 2.0.0
 
 ```powershell
 git status --short
-git add lib/triaxial.dart lib/src/triaxial test/triaxial_test.dart test/data/Geod3Test-v1.txt tool/geod3test.dart README_triaxial.md README_triaxial_transfer.md CHANGELOG.md GITHUB_PR_DESCRIPTION.md COMMIT_PUSH_CHECKLIST.md
+git add lib/triaxial.dart lib/src/triaxial test/triaxial_test.dart tool/geod3test.dart README_triaxial.md README_triaxial_transfer.md CHANGELOG.md GITHUB_PR_DESCRIPTION.md COMMIT_PUSH_CHECKLIST.md
 git commit -m "Add triaxial ellipsoid support for 2.0.0"
 git push
 ```
