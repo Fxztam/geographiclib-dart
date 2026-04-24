@@ -18,6 +18,10 @@ This Dart port covers the complete public API of `geographiclib-geodesic` JS v2.
 
 Correctness is verified by 271 test cases from Karney's upstream test suites.
 
+Since version `2.0.0`, the package also includes the triaxial ellipsoid implementation as a separate module, following Karney's original structure: the standard ellipsoid-of-revolution API remains under `Geodesic`, while the triaxial solver is exposed separately via `triaxial`.
+
+For the triaxial API, validation workflow, and transfer notes, see [README_triaxial.md](README_triaxial.md).
+
 ## Features
 
 | Class / API | Description | Accuracy |
@@ -121,7 +125,7 @@ Or, once published on pub.dev:
 
 ```yaml
 dependencies:
-  geographiclib_dart: ^1.0.0
+  geographiclib_dart: ^2.0.0
 ```
 
 ## Usage
